@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-	title: 'Peter Yungman – Developer Portfolio',
+	title: "Peter Yungman's Portfolio",
 	description:
 		'Welcome to my portfolio! I’m a Computer Science student at the University of Florida passionate about artificial intelligence, healthcare technology, and creating impactful software. My work ranges from software engineering internships and interdisciplinary AI research to mobile app development and UI/UX design.',
 	keywords: [
@@ -70,6 +70,7 @@ export const metadata: Metadata = {
 	},
 	icons: {
 		icon: [
+			{ url: '/favicon.png?v=1', type: 'image/png' },
 			{ url: '/favicon.ico' },
 			{ url: '/favicon-32x32.png', sizes: '32x32' },
 			{ url: '/favicon-16x16.png', sizes: '16x16' },
@@ -85,7 +86,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-gradient-to-br from-blue-50 via-purple-100 to-pink-50`}>
+			<body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-gradient-to-br from-blue-50 via-sky-100 to-blue-100`}>
 				<div className="min-h-screen flex flex-col items-center justify-center px-2 py-8">
 					<div className="w-full max-w-5xl bg-white/80 rounded-3xl shadow-2xl border border-blue-100 p-6 sm:p-12 backdrop-blur-md">
 						{children}

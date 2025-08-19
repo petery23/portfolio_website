@@ -13,11 +13,9 @@ export default function HeroSection() {
 					Peter Yungman
 				</h1>
 				<p className="text-lg sm:text-xl text-secondary mb-2 sm:mb-3 font-semibold">Computer Science @ UF · AI & Healthcare</p>
-				<p className="text-neutral-700 max-w-2xl mx-auto text-base sm:text-lg font-medium mb-4 sm:mb-6">
-					I build practical, human-centered software. Focusing on AI for healthcare and accessible tools that make people’s lives easier. I like clean UX, clear data, and shipping things that work.
-				</p>
+				
 				<p className="text-neutral-600 max-w-2xl mx-auto text-sm sm:text-base px-4">
-					I’m a CS student at the University of Florida with experience in React Native, computer vision, and applied ML. My projects span a rehab app for range-of-motion, a wearable blood-pressure device, and tools for student communities.
+					Hi, I’m Peter! I’m a Computer Science student at UF passionate about using AI to improve healthcare. My experience ranges from building motion-tracking apps with Mediapipe and OpenCV to researching linguistic markers of Hoarding Disorder with NLP. I’ve also worked as a TA, interned at a football data analytics startup, and led UI/UX efforts for SHPE. I love tackling problems that blend tech and impact, and I’m always open to connecting with others in software engineering and AI.
 				</p>
 			</div>
 		</section>

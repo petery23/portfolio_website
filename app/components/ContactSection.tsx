@@ -34,7 +34,7 @@ export default function ContactSection() {
 				>
 					<motion.h2 className="text-2xl font-semibold text-gray-900" variants={itemVariants}>Contact</motion.h2>
 					<motion.p className="text-gray-600" variants={itemVariants}>
-						Interested in working together? Let&apos;s have a conversation.
+						Interested in working together? Let&apos;s have a conversation!
 					</motion.p>
 					{/* Location */}
 					<motion.div className="flex items-center justify-center gap-2 text-gray-600" variants={itemVariants}>

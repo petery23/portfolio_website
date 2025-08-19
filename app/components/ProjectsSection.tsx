@@ -45,7 +45,10 @@ const containerVariants = {
 	hidden: { opacity: 0 },
 	visible: {
 		opacity: 1,
-		transition: { staggerChildren: 0.18 },
+		transition: { 
+			staggerChildren: 0.18,
+			duration: 0.7
+		},
 	},
 };
 
@@ -53,13 +56,7 @@ const cardVariants = {
 	hidden: { opacity: 0, y: 32 },
 	visible: { 
 		opacity: 1, 
-		y: 0, 
-		transition: { 
-			duration: 0.7,
-			type: "spring",
-			stiffness: 100,
-			damping: 15
-		} 
+		y: 0
 	},
 };
 

@@ -8,6 +8,7 @@ const containerVariants = {
 		opacity: 1,
 		transition: {
 			staggerChildren: 0.25,
+			duration: 0.7
 		},
 	},
 };
@@ -16,13 +17,7 @@ const itemVariants = {
 	hidden: { opacity: 0, y: 24 },
 	visible: { 
 		opacity: 1, 
-		y: 0, 
-		transition: { 
-			duration: 0.7,
-			type: "spring",
-			stiffness: 100,
-			damping: 15
-		} 
+		y: 0
 	},
 };
 

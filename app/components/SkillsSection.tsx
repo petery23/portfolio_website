@@ -65,10 +65,7 @@ export default function SkillsSection() {
 							whileInView={{ opacity: 1, y: 0, scale: 1 }}
 							transition={{ 
 								duration: 0.6, 
-								delay: index * 0.1,
-								type: "spring",
-								stiffness: 100,
-								damping: 15
+								delay: index * 0.1
 							}}
 							whileHover={{ 
 								scale: 1.05,

@@ -66,7 +66,7 @@ export default function SkillsSection() {
 							transition={{ 
 								duration: 0.6, 
 								delay: index * 0.1,
-								ease: "easeOut"
+								ease: [0.25, 0.46, 0.45, 0.94]
 							}}
 							whileHover={{ 
 								scale: 1.05,

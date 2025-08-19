@@ -36,7 +36,7 @@ const projects = [
 		'Team-built Arduino device that mounts on a hat kept by the nightstand. When the wearer gets up, an ultrasonic sensor detects nearby obstacles and triggers a piezo buzzer and light to warn of collisions—especially useful in low light. Includes tunable distance thresholds and alert patterns to reduce false alarms.',
 	stack: 'Arduino (C/C++), HC-SR04 ultrasonic sensor, piezo buzzer, LED, breadboard/3D-printed mount',
 	link: 'https://github.com/petery23/EchoGuard',
-	image: '/projects/echoguard_logo.png', // Use /projects/echoguard.jpg when ready
+	image: '/projects/EchoGuard_logo.png', // Use /projects/echoguard.jpg when ready
 	},
 ];
 

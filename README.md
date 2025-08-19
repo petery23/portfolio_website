@@ -1,140 +1,149 @@
-# Simple Portfolio Template
+# Peter Yungman - Portfolio
 
-[Demo](https://www.devportfoliotemplates.com/portfolio-templates/simple)
+A modern, responsive portfolio website showcasing my projects in computer science, AI, and healthcare technology.
 
-## Getting Started
+## 🚀 Live Demo
 
-You have two options to get started with this template:
+[View Portfolio](https://portfolio-website-petery23.vercel.app) *(Update with your actual deployment URL)*
 
-### Option 1: Using Git Sparse Checkout
+## 👨‍💻 About
 
-If you want to clone only this specific template:
+I'm Peter Yungman, a Computer Science student at the University of Florida with a passion for AI and healthcare technology. This portfolio showcases my projects in:
+
+- **Computer Vision & AI**: Sports analysis and sign language interpretation
+- **Healthcare Technology**: Range of motion tracking for physical therapy
+- **Hardware & IoT**: Arduino-based safety devices for elderly care
+- **Web Development**: Modern, responsive applications
+
+## 🛠 Featured Projects
+
+### Ultimate Frisbee Coach
+Mobile app using computer vision to analyze throwing mechanics with ±5% precision
+- **Tech**: React Native, Expo, Python, Flask, OpenCV, MediaPipe, NumPy
+- **GitHub**: [Ultimate-Frisbee-Coach](https://github.com/petery23/Ultimate-Frisbee-Coach)
+
+### Range of Motion (ROM)
+Real-time motion tracking for UF Shands Hospital physical therapy
+- **Tech**: Python, Flask, OpenCV, MediaPipe
+- **GitHub**: [Range-of-Motion](https://github.com/petery23/Range-of-Motion)
+
+### EchoGuard
+Arduino-based obstacle detection system for elderly mobility
+- **Tech**: Arduino, C++, Ultrasonic sensors, Piezo buzzers, LEDs
+- **GitHub**: [EchoGuard](https://github.com/petery23/EchoGuard)
+
+## 🛠️ Built With
+
+- **Framework**: Next.js 15 with TypeScript
+- **Styling**: Tailwind CSS with custom gradients
+- **Animations**: Framer Motion
+- **Deployment**: Vercel
+- **Language**: TypeScript/JavaScript
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+ and npm
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/petery23/portfolio_website.git
+   cd portfolio_website
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Run development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open in browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+### Build for Production
 
 ```bash
-git clone --no-checkout https://github.com/devportfoliotemplates/devportfoliotemplates.git
-cd devportfoliotemplates
-git sparse-checkout init --cone
-git sparse-checkout set simple-portfolio-template
-git checkout
+npm run build
+npm start
 ```
 
-### Option 2: Direct Download
+## 🎨 Customization
 
-You can download this template as a ZIP file:
+### Content Updates
+- **Personal info**: Update `app/components/HeroSection.tsx`
+- **Projects**: Modify `app/components/ProjectsSection.tsx`
+- **Skills**: Edit `app/components/SkillsSection.tsx`
+- **Contact**: Update `app/components/ContactSection.tsx`
 
-1. Visit [download-directory.github.io](https://download-directory.github.io/)
-2. Paste the URL of this portfolio folder: `https://github.com/devportfoliotemplates/devportfoliotemplates/tree/main/simple-portfolio-template`
-3. Download and extract the ZIP file
-
-### Running the Template
-
-Once you have the template:
-
-1. Install dependencies:
-
-```bash
-npm install
-# or
-yarn install
-# or
-pnpm install
-```
-
-2. Run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-3. Open [http://localhost:3000](http://localhost:3000) in your browser to see the portfolio.
-
-## Customization
-
-### Personal Information
-
-1. Update metadata in `app/layout.tsx`:
-
-   - Site title
-   - Description
-   - Open Graph metadata
-   - Favicon
-
-2. Modify content in `app/page.tsx`:
-
-   - Hero section
-   - About section
-   - Projects
-   - Contact information
-
-3. Replace assets:
-   - Replace images in the `public` directory
-   - Update social media icons
-   - Modify logo if needed
+### Assets
+- **Profile image**: Replace `public/portrait.jpeg`
+- **Resume**: Update `public/Peter_Resume2.pdf`
+- **Project images**: Add to `public/projects/`
 
 ### Styling
+- **Colors**: Modify gradients in component files
+- **Fonts**: Update in `app/layout.tsx`
+- **Animations**: Adjust Framer Motion variants
 
-1. Colors and Theme:
+## 📱 Features
 
-   - Customize colors in `tailwind.config.js`
-   - Modify theme variables in `app/globals.css`
+- ✅ **Fully Responsive** - Works on all devices
+- ✅ **Modern Design** - Gradient backgrounds and glass morphism
+- ✅ **Smooth Animations** - Framer Motion powered
+- ✅ **Fast Loading** - Next.js optimized
+- ✅ **SEO Friendly** - Proper metadata and structure
+- ✅ **Accessible** - WCAG compliant
 
-2. Typography:
+## 📂 Project Structure
 
-   - Update font families in `tailwind.config.js`
-   - Modify text sizes and weights
+```
+├── app/
+│   ├── components/
+│   │   ├── HeroSection.tsx      # Main hero with bio
+│   │   ├── ProjectsSection.tsx  # Featured projects
+│   │   ├── SkillsSection.tsx    # Technical skills
+│   │   └── ContactSection.tsx   # Contact info & social links
+│   ├── globals.css              # Global styles
+│   ├── layout.tsx               # Root layout
+│   └── page.tsx                 # Main page
+├── public/
+│   ├── portrait.jpeg            # Profile image
+│   ├── Peter_Resume2.pdf        # Resume
+│   └── projects/                # Project images
+└── tailwind.config.ts           # Tailwind configuration
+```
 
-3. Layout:
-   - Adjust spacing and padding in component files
-   - Modify responsive breakpoints in `tailwind.config.js`
+## 🚀 Deployment
 
-## Troubleshooting
+This portfolio is deployed on Vercel for optimal performance:
 
-### Common Issues
+1. **Connect GitHub repository to Vercel**
+2. **Configure build settings** (auto-detected for Next.js)
+3. **Deploy** - Automatic deployments on every push
 
-1. **Build Errors**
+## 📧 Contact
 
-   - Ensure all dependencies are installed
-   - Clear `.next` folder and node_modules
-   - Run `npm install` again
+- **Email**: [contact@peteryungman.com](mailto:contact@peteryungman.com)
+- **LinkedIn**: [peter-yungman](https://linkedin.com/in/peter-yungman)
+- **GitHub**: [@petery23](https://github.com/petery23)
 
-2. **Styling Issues**
+## 📄 License
 
-   - Run `npm run build` to ensure TailwindCSS classes are generated
-   - Check for conflicting styles in `globals.css`
+This project is open source and available under the [MIT License](LICENSE).
 
-3. **Image Loading**
-   - Verify images are in the correct format (PNG, JPG, WebP)
-   - Check image paths are correct
-   - Ensure images are in the `public` directory
+## 🙏 Acknowledgments
 
-## Deployment
+This portfolio was built using the [Simple Portfolio Template](https://github.com/devportfoliotemplates/devportfoliotemplates) by [@andreiancu](https://github.com/andreiancu). Thank you for creating such a clean and professional template foundation!
 
-Follow these steps to deploy your portfolio for free using GitHub and Vercel:
+- Original Template: [DevPortfolioTemplates](https://github.com/devportfoliotemplates/devportfoliotemplates)
+- Template Creator: [Andrei Ancu](https://github.com/andreiancu)
 
-1. Create a new GitHub repository
+---
 
-2. Push your portfolio to GitHub
-
-3. Deploy with Vercel:
-   - Go to [Vercel](https://vercel.com)
-   - Sign up or log in with GitHub
-   - Click "New Project"
-   - Import your GitHub repository
-   - Vercel will automatically detect Next.js
-   - Click "Deploy"
-
-Your portfolio will be live in minutes with a free Vercel domain (e.g., `your-repo.vercel.app`). You can later add a custom domain in your Vercel project settings.
-
-## Support
-
-If you find these templates helpful, please consider:
-
-- Starring the repository ⭐
-- Sharing with other developers
-- [Buying me a coffee](https://www.buymeacoffee.com/andreiancu) ☕
-
-For issues and feature requests, please [create an issue](https://github.com/devportfoliotemplates/devportfoliotemplates/issues).
+⭐ **Star this repository if it helped you!**

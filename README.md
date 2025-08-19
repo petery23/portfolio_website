@@ -4,7 +4,7 @@ A modern, responsive portfolio website showcasing my projects in computer scienc
 
 ## 🚀 Live Demo
 
-[View Portfolio](https://portfolio-website-petery23.vercel.app) *(Update with your actual deployment URL)*
+[View Portfolio](https://portfolio-website-qnnk.vercel.app/) *(Update with your actual deployment URL)*
 
 ## 👨‍💻 About
 

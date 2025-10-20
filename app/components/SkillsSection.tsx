@@ -16,7 +16,7 @@ const getSkillCategory = (skill: string): string => {
 	return 'tools';
 };
 
-const categoryColors = {
+const categoryColors: { [key: string]: string } = {
 	languages: 'bg-blue-100 text-blue-800',
 	frameworks: 'bg-green-100 text-green-800',
 	tools: 'bg-purple-100 text-purple-800'

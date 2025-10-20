@@ -3,7 +3,6 @@
 import AboutSection from '@/app/components/AboutSection';
 import CertificationsSection from './components/CertificationsSection';
 import EducationSection from './components/EducationSection';
-import ExperienceSection from './components/ExperienceSection';
 import HeroSection from './components/HeroSection';
 import ProjectsSection from './components/ProjectsSection';
 import SkillsSection from './components/SkillsSection';

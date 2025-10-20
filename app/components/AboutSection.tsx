@@ -15,11 +15,11 @@ export default function AboutSection() {
 				About
 			</h2>
 			<p className="text-gray-800">
-				Hey! I'm Peter, a Computer Science student at UF who's probably fighting with Gemini right now 
-				over some stubborn code. When I'm not debugging at 2 AM or helping students as a TA, you'll find 
+				Hey! I&apos;m Peter, a Computer Science student at UF who&apos;s probably fighting with Gemini right now 
+				over some stubborn code. When I&apos;m not debugging at 2 AM or helping students as a TA, you&apos;ll find 
 				me working on projects that caught my attention (usually involving computer vision or machine learning). 
-				I love the challenge of turning "this should work" into "why isn't this working?" and then eventually 
-				into something that actually helps people. Always curious about the stories behind the problems we're solving.
+				I love the challenge of turning &ldquo;this should work&rdquo; into &ldquo;why isn&apos;t this working?&rdquo; and then eventually 
+				into something that actually helps people. Always curious about the stories behind the problems we&apos;re solving.
 				Feel free to reach out if you want to chat about tech, projects, or just want to share some good memes!
 			</p>
 		</motion.section>

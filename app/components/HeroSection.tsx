@@ -21,8 +21,8 @@ const itemVariants = {
 export default function HeroSection() {
 	return (
 		<motion.div initial="hidden" animate="visible" variants={containerVariants}>
-			<div>
-				<motion.div variants={itemVariants}>
+			<div className="text-center lg:text-left">
+				<motion.div variants={itemVariants} className="flex justify-center lg:justify-start">
 					<Image
 						src="/portrait.jpeg"
 						alt="Portrait of Peter Yungman"
@@ -31,39 +31,63 @@ export default function HeroSection() {
 						className="rounded-full border-2 border-gray-300 mb-8"
 					/>
 				</motion.div>
-				<motion.h1 variants={itemVariants} className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+				<motion.h1 variants={itemVariants} className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
 					Peter Yungman
 				</motion.h1>
-				<motion.h2 variants={itemVariants} className="mt-3 text-lg font-medium tracking-tight text-gray-800 sm:text-xl">
+				<motion.h2 variants={itemVariants} className="mt-2 text-base font-medium tracking-tight text-gray-800 sm:text-lg lg:text-xl">
 					Computer Science Student at the University of Florida
 				</motion.h2>
-				<motion.p variants={itemVariants} className="mt-4 max-w-xs leading-normal text-gray-600">
+				<motion.p variants={itemVariants} className="mt-3 max-w-xs mx-auto lg:mx-0 leading-normal text-gray-600 text-sm sm:text-base">
 				Teaching Assistant @ University of Florida
 				</motion.p>
 			</div>
 
-			<motion.nav variants={itemVariants} className="hidden lg:block mt-12">
-				<ul className="flex flex-col space-y-4">
+			<motion.nav variants={itemVariants} className="mt-8 lg:mt-12">
+				<ul className="flex flex-col space-y-2 lg:space-y-4 items-center lg:items-start">
 					<li>
-						<a href="#about" className="group flex items-center py-3">
-							<span className="nav-indicator mr-4 h-px w-8 bg-gray-400 transition-all group-hover:w-16 group-hover:bg-blue-600"></span>
+						<a href="#about" className="group flex items-center py-2 lg:py-3">
+							<span className="nav-indicator mr-3 lg:mr-4 h-px w-6 lg:w-8 bg-gray-400 transition-all group-hover:w-12 lg:group-hover:w-16 group-hover:bg-blue-600"></span>
 							<span className="nav-text text-xs font-bold uppercase tracking-widest text-gray-500 group-hover:text-gray-900">
-								About
+								👋 About
 							</span>
 						</a>
 					</li>
 					<li>
-						<a href="#projects" className="group flex items-center py-3">
-							<span className="nav-indicator mr-4 h-px w-8 bg-gray-400 transition-all group-hover:w-16 group-hover:bg-blue-600"></span>
+						<a href="#projects" className="group flex items-center py-2 lg:py-3">
+							<span className="nav-indicator mr-3 lg:mr-4 h-px w-6 lg:w-8 bg-gray-400 transition-all group-hover:w-12 lg:group-hover:w-16 group-hover:bg-blue-600"></span>
 							<span className="nav-text text-xs font-bold uppercase tracking-widest text-gray-500 group-hover:text-gray-900">
-								Projects
+								🚀 Projects
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="#certifications" className="group flex items-center py-2 lg:py-3">
+							<span className="nav-indicator mr-3 lg:mr-4 h-px w-6 lg:w-8 bg-gray-400 transition-all group-hover:w-12 lg:group-hover:w-16 group-hover:bg-blue-600"></span>
+							<span className="nav-text text-xs font-bold uppercase tracking-widest text-gray-500 group-hover:text-gray-900">
+								🏆 Certifications
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="#education" className="group flex items-center py-2 lg:py-3">
+							<span className="nav-indicator mr-3 lg:mr-4 h-px w-6 lg:w-8 bg-gray-400 transition-all group-hover:w-12 lg:group-hover:w-16 group-hover:bg-blue-600"></span>
+							<span className="nav-text text-xs font-bold uppercase tracking-widest text-gray-500 group-hover:text-gray-900">
+								🎓 Education
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="#skills" className="group flex items-center py-2 lg:py-3">
+							<span className="nav-indicator mr-3 lg:mr-4 h-px w-6 lg:w-8 bg-gray-400 transition-all group-hover:w-12 lg:group-hover:w-16 group-hover:bg-blue-600"></span>
+							<span className="nav-text text-xs font-bold uppercase tracking-widest text-gray-500 group-hover:text-gray-900">
+								💻 Skills
 							</span>
 						</a>
 					</li>
 				</ul>
 			</motion.nav>
 
-			<div className="mt-8 flex items-center space-x-6">
+			<div className="mt-6 lg:mt-8 flex items-center justify-center lg:justify-start space-x-4 lg:space-x-6">
 				<motion.a
 					href="https://github.com/petery23"
 					target="_blank"

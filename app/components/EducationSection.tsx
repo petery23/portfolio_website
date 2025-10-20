@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 
 const education = [
 	{
@@ -23,15 +24,20 @@ const education = [
 ];
 
 export default function EducationSection() {
+	const ref = useRef(null);
+	const isInView = useInView(ref, { once: true, margin: "-100px" });
+
 	return (
 		<motion.section
+			ref={ref}
+			id="education"
 			className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
-			initial={{ opacity: 0, y: 20 }}
-			animate={{ opacity: 1, y: 0 }}
-			transition={{ duration: 0.5, delay: 0.5 }}
+			initial={{ opacity: 0, y: 50 }}
+			animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+			transition={{ duration: 0.6, ease: "easeOut" }}
 		>
-			<div className="sticky top-0 z-10 bg-[#f8f9fa] py-4 -mx-6 px-6 mb-4">
-				<h2 className="text-lg font-bold text-gray-900">Education</h2>
+			<div className="sticky top-0 z-10 bg-[#f8f9fa] py-3 sm:py-4 -mx-4 sm:-mx-6 px-4 sm:px-6 mb-3 sm:mb-4">
+				<h2 className="text-base sm:text-lg font-bold text-gray-900">🎓 Education</h2>
 			</div>
 			{education.map((edu, index) => (
 				<div

@@ -22,21 +22,6 @@ const categoryColors: { [key: string]: string } = {
 	tools: 'bg-purple-100 text-purple-800'
 };
 
-const skills = [
-	'Python',
-	'C++',
-	'Java',
-	'JavaScript',
-	'TypeScript',
-	'Dart',
-	'React Native',
-	'Flutter',
-	'Firebase',
-	'Flask',
-	'OpenCV',
-	'MediaPipe',
-];
-
 export default function SkillsSection() {
 	const ref = useRef(null);
 	const isInView = useInView(ref, { once: true, margin: "-100px" });

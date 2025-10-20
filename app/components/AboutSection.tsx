@@ -21,8 +21,8 @@ export default function AboutSection() {
 			</div>
 			<div className="prose prose-gray max-w-none">
 				<p className="text-gray-700 leading-relaxed">
-					Hi! Thanks for checking out my website. I made this to show off some of the cool stuff I've worked on. 
-					If you think any of it's cool too, feel free to{' '}
+					Hi! Thanks for checking out my website. I made this to show off some of the cool stuff I&apos;ve worked on. 
+					If you think any of it&apos;s cool too, feel free to{' '}
 					<a 
 						href="https://www.linkedin.com/in/peter-yungman/" 
 						target="_blank" 
@@ -31,7 +31,7 @@ export default function AboutSection() {
 					>
 						reach out
 					</a>
-					{' '}— I'm always looking for new projects and ideas to get involved with.
+					{' '}— I&apos;m always looking for new projects and ideas to get involved with.
 				</p>
 			</div>
 		</motion.section>

@@ -1,6 +1,5 @@
 'use client';
 
-import AboutSection from '@/app/components/AboutSection';
 import CertificationsSection from './components/CertificationsSection';
 import EducationSection from './components/EducationSection';
 import HeroSection from './components/HeroSection';

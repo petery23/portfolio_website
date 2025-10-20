@@ -1,6 +1,6 @@
 # Peter Yungman - Portfolio
 
-A modern, responsive portfolio website showcasing my projects in computer science, AI, and healthcare technology.
+A modern, responsive portfolio website built with Next.js and TypeScript, showcasing my projects in computer science, AI, and healthcare technology.
 
 ## 🚀 Live Demo
 
@@ -139,10 +139,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 🙏 Acknowledgments
 
-This portfolio was built using the [Simple Portfolio Template](https://github.com/devportfoliotemplates/devportfoliotemplates) by [@andreiancu](https://github.com/andreiancu). Thank you for creating such a clean and professional template foundation!
-
-- Original Template: [DevPortfolioTemplates](https://github.com/devportfoliotemplates/devportfoliotemplates)
-- Template Creator: [Andrei Ancu](https://github.com/andreiancu)
+This portfolio was built from scratch using modern web technologies and best practices. Special thanks to the open source community for the amazing tools and libraries that made this possible.
 
 ---
 

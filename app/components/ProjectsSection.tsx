@@ -31,7 +31,7 @@ const projects = [
     },
 ];
 
-const tagColors = {
+const tagColors: { [key: string]: string } = {
     Python: 'bg-yellow-100 text-yellow-800',
     MediaPipe: 'bg-orange-100 text-orange-800',
     OpenCV: 'bg-green-100 text-green-800',

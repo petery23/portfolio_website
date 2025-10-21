@@ -8,7 +8,6 @@ const education = [
 		degree: 'Bachelor of Science in Computer Science',
 		university: 'University of Florida',
 		location: 'Gainesville, FL',
-		date: 'May 2028',
 		gpa: '4.0/4.0',
 		details: [
 			{
@@ -25,7 +24,7 @@ const education = [
 
 export default function EducationSection() {
 	const ref = useRef(null);
-	const isInView = useInView(ref, { once: true, margin: "-100px" });
+	const isInView = useInView(ref, { once: true, margin: "0px 0px -200px 0px" });
 
 	return (
 		<motion.section
@@ -50,7 +49,7 @@ export default function EducationSection() {
 					</h3>
 					<p className="text-gray-700">{edu.university}</p>
 					<p className="text-sm text-gray-500 mt-1">
-						{edu.date} · GPA: {edu.gpa}
+						GPA: {edu.gpa}
 					</p>
 					<div className="mt-2 space-y-2">
 						{edu.details.map((detail, i) => (

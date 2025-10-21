@@ -15,7 +15,7 @@ const certifications = [
 
 export default function CertificationsSection() {
 	const ref = useRef(null);
-	const isInView = useInView(ref, { once: true, margin: "-100px" });
+	const isInView = useInView(ref, { once: true, margin: "0px 0px -200px 0px" });
 
 	return (
 		<motion.section

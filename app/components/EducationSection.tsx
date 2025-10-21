@@ -39,15 +39,19 @@ export default function EducationSection() {
 				<h2 className="text-base sm:text-lg font-bold text-gray-900">🎓 Education</h2>
 			</div>
 			{education.map((edu, index) => (
-				<div
+				<a
 					key={index}
-					className="group relative rounded-lg border border-transparent p-4 transition-colors hover:bg-white hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] hover:drop-shadow-lg"
+					href="https://www.ufl.edu/"
+					target="_blank"
+					rel="noopener noreferrer"
+					className="group relative block rounded-lg border border-transparent p-4 transition-colors hover:bg-white hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] hover:drop-shadow-lg cursor-pointer"
 				>
-					<div className="absolute -inset-px rounded-lg border border-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
-					<h3 className="font-medium text-gray-900">
+					<h3 className="font-medium text-gray-900 group-hover:text-blue-600">
 						{edu.degree}
 					</h3>
-					<p className="text-gray-700">{edu.university}</p>
+					<p className="text-gray-700 group-hover:text-blue-600">
+						{edu.university}
+					</p>
 					<p className="text-sm text-gray-500 mt-1">
 						GPA: {edu.gpa}
 					</p>
@@ -60,7 +64,7 @@ export default function EducationSection() {
 							</div>
 						))}
 					</div>
-				</div>
+				</a>
 			))}
 		</motion.section>
 	);

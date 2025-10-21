@@ -8,7 +8,7 @@ const certifications = [
 		name: 'AWS Certified Cloud Practitioner',
 		issuer: 'Amazon Web Services',
 		date: 'In Progress',
-		url: '#', // Add URL to certification badge
+		url: 'https://aws.amazon.com/certification/certified-cloud-practitioner/',
 		status: 'in-progress'
 	},
 ];
@@ -31,22 +31,19 @@ export default function CertificationsSection() {
 			</div>
 			<div>
 				{certifications.map((cert, index) => (
-					<div
+					<a
 						key={index}
-						className={`group relative rounded-lg border border-transparent p-4 transition-colors hover:bg-white hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] hover:drop-shadow-lg ${
+						href={cert.url}
+						target="_blank"
+						rel="noopener noreferrer"
+						className={`group relative block rounded-lg border border-transparent p-4 transition-colors hover:bg-white hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] hover:drop-shadow-lg cursor-pointer ${
 							cert.status === 'in-progress' ? 'bg-blue-50 border-blue-200' : ''
 						}`}
 					>
-						<div className="absolute -inset-px rounded-lg border border-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
 						<div className="flex items-center gap-2">
-							<a
-								href={cert.url}
-								target="_blank"
-								rel="noopener noreferrer"
-								className="font-medium text-gray-900 hover:text-blue-600"
-							>
+							<span className="font-medium text-gray-900 group-hover:text-blue-600">
 								{cert.name}
-							</a>
+							</span>
 							{cert.status === 'in-progress' && (
 								<span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
 									In Progress
@@ -59,7 +56,7 @@ export default function CertificationsSection() {
 						}`}>
 							{cert.date}
 						</p>
-					</div>
+					</a>
 				))}
 			</div>
 		</motion.section>

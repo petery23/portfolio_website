@@ -57,7 +57,7 @@ const categoryColors: { [key: string]: string } = {
 };
 
 // Create a separate component for individual projects to comply with Rules of Hooks
-function ProjectCard({ project, index }: { project: typeof projects[0], index: number }) {
+function ProjectCard({ project }: { project: typeof projects[0] }) {
     const projectRef = useRef(null);
     const projectInView = useInView(projectRef, { once: true, margin: "0px 0px -100px 0px" });
     
@@ -136,7 +136,7 @@ export default function ProjectsSection() {
 			</h2>
             <ul className="group/list">
                 {projects.map((project, idx) => (
-                    <ProjectCard key={idx} project={project} index={idx} />
+                    <ProjectCard key={idx} project={project} />
                 ))}
             </ul>
         </motion.section>

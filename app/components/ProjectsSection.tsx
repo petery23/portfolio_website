@@ -130,8 +130,8 @@ export default function ProjectsSection() {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
         >
-            {/* The sticky wrapper is now correct: it has the sticky, top-0, z-10, and bg-[#f8f9fa] classes */}
-			<h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 sticky top-0 z-50 bg-[#f8f9fa] py-3 sm:py-4 -mx-4 sm:-mx-6 px-4 sm:px-6">
+			{/* The sticky wrapper is now correct: it has the sticky, top-0, z-10, and bg-[#f8f9fa] classes */}
+			<h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 sticky top-0 z-50 bg-[#f8f9fa] py-3 sm:py-4 -mx-6 sm:-mx-6 px-6 sm:px-6">
 				🚀 Projects
 			</h2>
             <ul className="group/list">

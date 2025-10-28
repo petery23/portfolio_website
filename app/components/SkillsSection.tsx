@@ -29,7 +29,7 @@ export default function SkillsSection() {
 			animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
 			transition={{ duration: 0.6, ease: "easeOut" }}
 		>
-			<div className="sticky top-0 z-10 bg-[#f8f9fa] py-3 sm:py-4 -mx-4 sm:-mx-6 px-4 sm:px-6 mb-3 sm:mb-4">
+			<div className="sticky top-0 z-10 bg-[#f8f9fa] py-3 sm:py-4 -mx-6 sm:-mx-6 px-6 sm:px-6 mb-3 sm:mb-4">
 				<h2 className="text-base sm:text-lg font-bold text-gray-900">💻 Skills</h2>
 			</div>
  			<div className="space-y-6">

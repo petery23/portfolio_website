@@ -26,7 +26,7 @@ export default function CertificationsSection() {
 			animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
 			transition={{ duration: 0.6, ease: "easeOut" }}
 		>
-			<div className="sticky top-0 z-10 bg-[#f8f9fa] py-3 sm:py-4 -mx-4 sm:-mx-6 px-4 sm:px-6 mb-3 sm:mb-4">
+			<div className="sticky top-0 z-10 bg-[#f8f9fa] py-3 sm:py-4 -mx-6 sm:-mx-6 px-6 sm:px-6 mb-3 sm:mb-4">
 				<h2 className="text-base sm:text-lg font-bold text-gray-900">🏆 Certifications</h2>
 			</div>
 			<div>
@@ -44,11 +44,6 @@ export default function CertificationsSection() {
 							<span className="font-medium text-gray-900 group-hover:text-blue-600">
 								{cert.name}
 							</span>
-							{cert.status === 'in-progress' && (
-								<span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-									In Progress
-								</span>
-							)}
 						</div>
 						<p className="text-gray-700">{cert.issuer}</p>
 						<p className={`text-sm mt-1 ${

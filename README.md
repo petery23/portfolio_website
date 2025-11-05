@@ -46,8 +46,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 🙏 Acknowledgments
 
-If you think this is cool, reach out on LinkedIn 😎
-
----
-
-⭐ **Star this repository if it helped you!**
+If you think this is cool, reach out to me on LinkedIn 😎

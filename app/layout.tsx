@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, JetBrains_Mono } from 'next/font/google';
+// @ts-expect-error Side-effect CSS import is resolved by Next.js bundling.
 import './globals.css';
 
 const inter = Inter({
@@ -7,10 +8,16 @@ const inter = Inter({
 	variable: '--font-inter',
 });
 
+const jetbrainsMono = JetBrains_Mono({
+	subsets: ['latin'],
+	variable: '--font-mono',
+	weight: ['300', '400', '500'],
+});
+
 export const metadata: Metadata = {
-	title: 'Peter Yungman – Developer Portfolio',
+	title: 'Peter Yungman',
 	description:
-		'Welcome to my portfolio! I’m a Computer Science student at the University of Florida passionate about artificial intelligence, healthcare technology, and creating impactful software. My work ranges from software engineering internships and interdisciplinary AI research to mobile app development and UI/UX design.',
+		'Welcome to my portfolio! I\'m a Computer Science student at the University of Florida passionate about artificial intelligence, healthcare technology, and creating impactful software.',
 	keywords: [
 		'Artificial Intelligence',
 		'Healthcare Technology',
@@ -19,7 +26,6 @@ export const metadata: Metadata = {
 		'Mobile App Development',
 		'UI/UX Design',
 		'AI Research',
-		'Internships',
 		'Peter Yungman',
 		'Computer Science',
 		'Developer Portfolio',
@@ -79,8 +85,8 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" className="scroll-smooth">
-			<body className={`${inter.variable} antialiased`}>{children}</body>
+		<html lang="en">
+			<body className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}>{children}</body>
 		</html>
 	);
 }

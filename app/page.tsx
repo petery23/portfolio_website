@@ -320,7 +320,7 @@ export default function VSCodePortfolio() {
   useEffect(() => {
     document.documentElement.style.setProperty('--accent', accent);
     document.body.classList.toggle('dark', dark);
-  }, []);
+  }, [accent, dark]);
 
   useEffect(() => {
     const t = setInterval(() => setTime(new Date()), 30000);

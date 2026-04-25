@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
-// @ts-expect-error Side-effect CSS import is resolved by Next.js bundling.
+// @ts-ignore
 import './globals.css';
 
 const inter = Inter({

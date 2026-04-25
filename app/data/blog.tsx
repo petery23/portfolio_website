@@ -122,6 +122,10 @@ export const BLOG_POSTS: BlogPost[] = [
         publishing a live scanning tool publicly is a bit sketchy. The public site linked below has the
         techniques and tutorial pages if you want to check it out.
       </p>
+      <p>
+        Check out the site{' '}
+        <a href="https://pentest-playbook.onrender.com/" target="_blank" rel="noopener noreferrer">here</a>
+      </p>
       <Image
         src="/blog_pictures/pen_test_techniques.png"
         alt="Techniques page"
@@ -131,10 +135,7 @@ export const BLOG_POSTS: BlogPost[] = [
         unoptimized
         style={{ width: '70%', height: 'auto', borderRadius: 8, margin: '12px 0' }}
       />
-      <p>
-        Check out the site{' '}
-        <a href="https://pentest-playbook.onrender.com/" target="_blank" rel="noopener noreferrer">here</a>
-      </p>
+      
     </>
   ),
 },

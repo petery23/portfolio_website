@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, Fragment } from 'react';
+import { useState, useEffect, useRef, useMemo, Fragment } from 'react';
 import Image from 'next/image';
 import { PROJECTS, type Skill, type Project } from './data/projects';
 import { BLOG_POSTS } from './data/blog';
@@ -62,7 +62,143 @@ const TREE: TreeNodeData[] = [
 
 
 // ─── Content components ─────────────────────────────────────────────────────
-function ReadmeContent() {
+// ─── Search index for command palette ───────────────────────────────────────
+interface SearchEntry {
+  fileId: string;
+  label: string;
+  detail: string;
+  searchText: string;
+}
+
+const SEARCH_INDEX: SearchEntry[] = [
+  {
+    fileId: 'readme',
+    label: 'README.md',
+    detail: 'Peter Yungman — About, Contact',
+    searchText: 'readme.md peter yungman about contact pinned university of florida cs portfolio linkedin github email',
+  },
+  ...PROJECTS.map(p => ({
+    fileId: p.id,
+    label: p.filename,
+    detail: p.title,
+    searchText: [p.filename, p.title, p.desc, ...p.skills.map(s => s.name)].join(' ').toLowerCase(),
+  })),
+  ...SORTED_POSTS.map(p => ({
+    fileId: p.id,
+    label: p.filename,
+    detail: p.title,
+    searchText: [p.filename, p.title, p.date].join(' ').toLowerCase(),
+  })),
+  {
+    fileId: 'settings',
+    label: 'Settings',
+    detail: 'Appearance, accent color, theme',
+    searchText: 'settings appearance accent color theme dark light',
+  },
+  {
+    fileId: 'dotenv',
+    label: '.env',
+    detail: 'DONT OPEN. PRIVATE KEYS HERE.',
+    searchText: '.env linkedin secrets',
+  },
+];
+
+// ─── Command Palette ────────────────────────────────────────────────────────
+function CommandPalette({ open, onClose, openFile }: {
+  open: boolean;
+  onClose: () => void;
+  openFile: (id: string) => void;
+}) {
+  const [query, setQuery] = useState('');
+  const [activeIdx, setActiveIdx] = useState(0);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const results = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return SEARCH_INDEX;
+    return SEARCH_INDEX.filter(e => e.searchText.includes(q));
+  }, [query]);
+
+  useEffect(() => {
+    if (open) {
+      setQuery('');
+      setActiveIdx(0);
+      requestAnimationFrame(() => inputRef.current?.focus());
+    }
+  }, [open]);
+
+  useEffect(() => { setActiveIdx(0); }, [results]);
+
+  const select = (idx: number) => {
+    if (results[idx]) {
+      openFile(results[idx].fileId);
+      onClose();
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    switch (e.key) {
+      case 'ArrowDown':
+        e.preventDefault();
+        setActiveIdx(i => Math.min(i + 1, results.length - 1));
+        break;
+      case 'ArrowUp':
+        e.preventDefault();
+        setActiveIdx(i => Math.max(i - 1, 0));
+        break;
+      case 'Enter':
+        e.preventDefault();
+        select(activeIdx);
+        break;
+      case 'Escape':
+        onClose();
+        break;
+    }
+  };
+
+  if (!open) return null;
+
+  return (
+    <div className="palette-backdrop" onClick={onClose}>
+      <div className="palette" onClick={e => e.stopPropagation()}>
+        <input
+          ref={inputRef}
+          className="palette-input"
+          placeholder="Search files by name..."
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+          onKeyDown={handleKeyDown}
+        />
+        <div className="palette-results">
+          {results.length === 0 ? (
+            <div className="palette-empty">No matching files</div>
+          ) : (
+            results.map((entry, i) => (
+              <div
+                key={entry.fileId}
+                className={`palette-row${i === activeIdx ? ' active' : ''}`}
+                onClick={() => select(i)}
+                onMouseEnter={() => setActiveIdx(i)}
+              >
+                {entry.fileId === 'dotenv' ? <IconEnv /> : <IconMd />}
+                <span className="palette-label">{entry.label}</span>
+                <span className="palette-detail">{entry.detail}</span>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const PINNED_FILES: { id: string; filename: string; desc: string }[] = [
+  { id: 'winging',             filename: 'winging-flights.md',      desc: 'daily flight deal alerts' },
+  { id: 'cybersec-journey',    filename: 'my-cybersec-journey.md',  desc: 'getting into security' },
+  { id: 'financial-algorithm', filename: 'financial-algos.md',      desc: 'trading signals from 10-Ks' },
+];
+
+function ReadmeContent({ openFile }: { openFile: (id: string) => void }) {
   return (
     <div className="md">
       <div className="profile-row">
@@ -84,20 +220,13 @@ function ReadmeContent() {
 
       <h2>About</h2>
       <p>
-        Hi! Thanks for checking out my website. I made this to show off some of the cool stuff I've
-        worked on. If you think any of it's cool too, shoot me a message on LinkedIn. I'm always looking
-        for new projects and ideas to get involved with.
+        Hi! I wanted a cool way to display some of my recent projects. If you think any of it's cool too, shoot me a message on LinkedIn. I'm always looking
+        for new projects and ideas to get involved with. If you check out the projects folder you can see a little more about some of the projects
+        I've worked on, and the under the blog folder I have written about some of the things I've worked on recently.
       </p>
 
       <h2>Contact</h2>
       <div className="contact-grid">
-        <a href="mailto:peter.yungman@ufl.edu" className="contact-card">
-          <div className="cc-dot" />
-          <div>
-            <div className="cc-label">email</div>
-            <div className="cc-value">peter.yungman@ufl.edu</div>
-          </div>
-        </a>
         <a href="https://www.linkedin.com/in/peter-yungman/" target="_blank" rel="noopener noreferrer" className="contact-card">
           <div className="cc-dot" />
           <div>
@@ -112,6 +241,25 @@ function ReadmeContent() {
             <div className="cc-value">@petery23</div>
           </div>
         </a>
+        <a href="mailto:peter.yungman@ufl.edu" className="contact-card">
+          <div className="cc-dot" />
+          <div>
+            <div className="cc-label">email</div>
+            <div className="cc-value">peter.yungman@ufl.edu</div>
+          </div>
+        </a>
+      </div>
+
+      <h2>Pinned</h2>
+      <div className="pinned-section">
+        {PINNED_FILES.map(p => (
+          <div key={p.id} className="pinned-row" onClick={() => openFile(p.id)}>
+            <IconMd />
+            <span className="pinned-name">{p.filename}</span>
+            <span className="pinned-sep">&mdash;</span>
+            <span className="pinned-desc">{p.desc}</span>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -303,9 +451,12 @@ export default function VSCodePortfolio() {
   const [tabs, setTabs] = useState<string[]>(['readme']);
   const [active, setActive] = useState<string | null>('readme');
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
-  const [accent, setAccentState] = useState('#0969da');
-  const [dark, setDarkState] = useState(false);
+  const [accent, setAccentState] = useState('#8957e5');
+  const [dark, setDarkState] = useState(true);
   const [time, setTime] = useState<Date>(new Date());
+  const [paletteOpen, setPaletteOpen] = useState(false);
+  const [dragTab, setDragTab] = useState<string | null>(null);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const setAccent = (c: string) => {
     setAccentState(c);
@@ -327,12 +478,29 @@ export default function VSCodePortfolio() {
     return () => clearInterval(t);
   }, []);
 
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setPaletteOpen(prev => !prev);
+      }
+    };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, []);
+
   const openFile = (id: string) => {
+    setDrawerOpen(false);
     if (id === 'dotenv') {
       window.open('https://www.linkedin.com/in/peter-yungman/', '_blank', 'noopener,noreferrer');
       return;
     }
-    setTabs(prev => prev.includes(id) ? prev : [...prev, id]);
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+      setTabs([id]);
+    } else {
+      setTabs(prev => prev.includes(id) ? prev : [...prev, id]);
+    }
     setActive(id);
   };
 
@@ -349,13 +517,45 @@ export default function VSCodePortfolio() {
     return s;
   });
 
+  const onTabDragStart = (id: string, e: React.DragEvent) => {
+    setDragTab(id);
+    e.dataTransfer.effectAllowed = 'move';
+  };
+
+  const onTabDragOver = (id: string, e: React.DragEvent) => {
+    e.preventDefault();
+    if (!dragTab || dragTab === id) return;
+    setTabs(prev => {
+      const from = prev.indexOf(dragTab);
+      const to = prev.indexOf(id);
+      if (from === -1 || to === -1) return prev;
+      const next = [...prev];
+      next.splice(from, 1);
+      next.splice(to, 0, dragTab);
+      return next;
+    });
+  };
+
+  const onTabDragEnd = () => setDragTab(null);
+
+  const onBreadcrumbClick = (segment: string) => {
+    const folder = TREE.find(n => n.type === 'folder' && n.name === segment);
+    if (folder) {
+      setExpanded(prev => {
+        const s = new Set(prev);
+        s.add(folder.id);
+        return s;
+      });
+    }
+  };
+
   const meta = active ? FILES[active] : null;
   const timeStr = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
   const renderContent = () => {
     if (!active || !meta) return null;
     switch (active) {
-      case 'readme': return <ReadmeContent />;
+      case 'readme': return <ReadmeContent openFile={openFile} />;
       case 'settings': return <SettingsContent accent={accent} setAccent={setAccent} dark={dark} setDark={setDark} />;
       default: {
         const project = PROJECTS.find(p => p.id === active);
@@ -380,11 +580,18 @@ export default function VSCodePortfolio() {
     <div className="vscode-app">
       {/* Title bar */}
       <div className="titlebar">
-        <div style={{ display: 'flex', gap: 6, flexShrink: 0 }}>
+        <div className="traffic-lights">
           <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#ff5f57', cursor: 'pointer' }} onClick={() => window.close()} />
           <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#febc2e' }} />
           <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#28c840' }} />
         </div>
+        <button type="button" className="hamburger" onClick={() => setDrawerOpen(p => !p)} aria-label="Toggle file tree">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+            <line x1="2" y1="4" x2="14" y2="4" />
+            <line x1="2" y1="8" x2="14" y2="8" />
+            <line x1="2" y1="12" x2="14" y2="12" />
+          </svg>
+        </button>
         <div className="titlebar-title">
           {meta ? `${meta.name} \u2014 peter-yungman` : 'peter-yungman'}
         </div>
@@ -398,7 +605,7 @@ export default function VSCodePortfolio() {
             <path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" />
           </svg>
         </div>
-        <div className="act-icon" title="Search">
+        <div className="act-icon" title="Search (Ctrl+K)" onClick={() => setPaletteOpen(true)}>
           <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
             <circle cx="11" cy="11" r="7" /><path d="M21 21l-4.35-4.35" />
           </svg>
@@ -411,8 +618,11 @@ export default function VSCodePortfolio() {
         </div>
       </div>
 
+      {/* Drawer overlay — mobile only */}
+      {drawerOpen && <div className="drawer-overlay" onClick={() => setDrawerOpen(false)} />}
+
       {/* Sidebar */}
-      <div className="sidebar">
+      <div className={`sidebar${drawerOpen ? ' open' : ''}`}>
         <div className="sidebar-label">Explorer</div>
         <div className="repo-row">
           <span style={{ fontSize: 9, color: 'var(--muted)' }}>{'\u25BE'}</span>
@@ -430,7 +640,15 @@ export default function VSCodePortfolio() {
           {tabs.map(id => {
             const f = FILES[id];
             return (
-              <div key={id} className={`tab${active === id ? ' active' : ''}`} onClick={() => setActive(id)}>
+              <div
+                key={id}
+                className={`tab${active === id ? ' active' : ''}${dragTab === id ? ' dragging' : ''}`}
+                onClick={() => setActive(id)}
+                draggable
+                onDragStart={e => onTabDragStart(id, e)}
+                onDragOver={e => onTabDragOver(id, e)}
+                onDragEnd={onTabDragEnd}
+              >
                 <IconMd />
                 {f?.name}
                 <span className="tab-x" onClick={e => closeTab(id, e)}>&times;</span>
@@ -443,7 +661,11 @@ export default function VSCodePortfolio() {
           <div className="breadcrumb">
             {meta.crumb.map((part, i, arr) => (
               <Fragment key={i}>
-                <span style={i === arr.length - 1 ? { color: 'var(--text)' } : {}}>{part}</span>
+                {i < arr.length - 1 ? (
+                  <span className="breadcrumb-link" onClick={() => onBreadcrumbClick(part)}>{part}</span>
+                ) : (
+                  <span style={{ color: 'var(--text)' }}>{part}</span>
+                )}
                 {i < arr.length - 1 && <span style={{ color: 'var(--border)' }}>&rsaquo;</span>}
               </Fragment>
             ))}
@@ -477,15 +699,17 @@ export default function VSCodePortfolio() {
         )}
       </div>
 
+      <CommandPalette open={paletteOpen} onClose={() => setPaletteOpen(false)} openFile={openFile} />
+
       {/* Status bar */}
       <div className="statusbar">
-        <span className="s-item">
+        <a className="s-item s-link" href="https://github.com/petery23" target="_blank" rel="noopener noreferrer">
           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <line x1="6" y1="3" x2="6" y2="15" /><circle cx="18" cy="6" r="3" />
             <circle cx="6" cy="18" r="3" /><path d="M18 9a9 9 0 01-9 9" />
           </svg>
           main
-        </span>
+        </a>
         <span className="s-item">
           {meta?.name ?? 'no file open'}
         </span>

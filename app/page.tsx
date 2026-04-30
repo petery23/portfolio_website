@@ -495,20 +495,8 @@ export default function VSCodePortfolio() {
       window.open('https://www.linkedin.com/in/peter-yungman/', '_blank', 'noopener,noreferrer');
       return;
     }
-    const isMobile = window.innerWidth <= 768;
-    if (isMobile) {
-      setTabs([id]);
-    } else {
-      setTabs(prev => prev.includes(id) ? prev : [...prev, id]);
-    }
+    setTabs([id]);
     setActive(id);
-  };
-
-  const closeTab = (id: string, e: React.MouseEvent) => {
-    e.stopPropagation();
-    const next = tabs.filter(t => t !== id);
-    setTabs(next);
-    if (active === id) setActive(next[next.length - 1] ?? null);
   };
 
   const toggleFolder = (id: string) => setExpanded(prev => {
@@ -651,7 +639,6 @@ export default function VSCodePortfolio() {
               >
                 <IconMd />
                 {f?.name}
-                <span className="tab-x" onClick={e => closeTab(id, e)}>&times;</span>
               </div>
             );
           })}
